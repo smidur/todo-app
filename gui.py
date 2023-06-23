@@ -9,7 +9,7 @@ list_box = sg.Listbox(values=functions.get_todos(), key='todos',
 edit_button = sg.Button("Edit")
 
 window = sg.Window("To-Do",
-                   layout=[[label, input_box, add_button], [list_box, edit_button]],
+                   layout=[[label], [input_box, add_button], [list_box, edit_button]],
                    font=('Ubuntu', 12))
 while True:
     event, values = window.read()
@@ -18,12 +18,24 @@ while True:
 
     if event.startswith("Add"):
         todos = functions.get_todos()
-        new_todo = values['todo'] + "\n"
+        new_todo = values['todo']
         todos.append(new_todo)
         functions.write_todos(todos)
-    elif event.startswith('Edit'):
-        print("edit button pressed")
-        continue
+        window['todos'].update(values=functions.get_todos())
+
+    elif event.startswith("Edit"):
+        todo_to_edit = values['todos'][0]
+        new_todo = values['todo']
+
+        todos = functions.get_todos()
+        index = todos.index(todo_to_edit)
+        todos[index] = new_todo
+        functions.write_todos(todos)
+        window['todos'].update(values=functions.get_todos())
+
+    elif event.startswith("todos"):
+        window['todo'].update(value=values['todos'][0])
+
     elif sg.WINDOW_CLOSED:
         break
 

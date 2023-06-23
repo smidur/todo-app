@@ -1,6 +1,9 @@
-Sort up my stuff
-create a new poll
-delete previous
-Clean the house
-go to work
-buy medicine
+Sort Up My Stuff
+Create A New Poll
+Wash The Car
+Clean The House
+Go To Work
+Buy Medicine
+Relax
+Call The Embassy
+Code The Program
