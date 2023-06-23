@@ -12,7 +12,6 @@ while True:
         todos = functions.get_todos()
 
         for index, item in enumerate(todos):
-            item = item.strip("\n")
             row = f"{index + 1}: {item.title()}"
             print(row)
 
@@ -21,7 +20,7 @@ while True:
 
         todos = functions.get_todos()
 
-        todos.append(todo + "\n")
+        todos.append(todo)
 
         functions.write_todos(todos)
 
@@ -33,7 +32,7 @@ while True:
             todos = functions.get_todos()
 
             change = input(f"Type a new todo instead of '{todos[number]}': ")
-            todos[number] = change + "\n"
+            todos[number] = change
 
             functions.write_todos(todos)
         except ValueError:
@@ -46,7 +45,7 @@ while True:
 
             todos = functions.get_todos()
             index = number - 1
-            todo_to_remove = todos[index].strip("\n")
+            todo_to_remove = todos[index].strip()
             todos.pop(index)
 
             functions.write_todos(todos)
