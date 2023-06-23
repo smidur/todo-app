@@ -1,6 +1,9 @@
 import functions
 from datetime import datetime as dt
 
+now = dt.now().strftime("%Y-%m-%d__%H-%M")
+print("It is:", now)
+
 while True:
     user_action = input("Type add, show, edit, complete or exit: ")
     user_action.strip()
@@ -10,7 +13,7 @@ while True:
 
         for index, item in enumerate(todos):
             item = item.strip("\n")
-            row = f"{index + 1}: {item.capitalize()}"
+            row = f"{index + 1}: {item.title()}"
             print(row)
 
     elif user_action.startswith("add"):
@@ -48,7 +51,7 @@ while True:
 
             functions.write_todos(todos)
 
-            message = f"Todo {todo_to_remove} was removed from the list."
+            message = f"Todo '{todo_to_remove}' was removed from the list."
             print(message)
         except IndexError:
             print("There's no item with that number.")
