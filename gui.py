@@ -16,14 +16,14 @@ while True:
     print(event)
     print(values)
 
-    if event.startswith("Add"):
+    if event == "Add":
         todos = functions.get_todos()
         new_todo = values['todo']
         todos.append(new_todo)
         functions.write_todos(todos)
         window['todos'].update(values=functions.get_todos())
 
-    elif event.startswith("Edit"):
+    elif event == "Edit":
         todo_to_edit = values['todos'][0]
         new_todo = values['todo']
 
@@ -33,10 +33,10 @@ while True:
         functions.write_todos(todos)
         window['todos'].update(values=functions.get_todos())
 
-    elif event.startswith("todos"):
+    elif event == "todos":
         window['todo'].update(value=values['todos'][0])
 
-    elif sg.WINDOW_CLOSED:
+    elif event == sg.WINDOW_CLOSED:
         break
 
 window.close()
