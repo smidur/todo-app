@@ -4,12 +4,15 @@ import functions
 todos = functions.get_todos()
 
 st.set_page_config(layout='wide')
+
+
 def add_todo():
-    todo = st.session_state['new_todo']
-    todo = todo.strip()
-    todos.append(todo)
+    todo_local = st.session_state['new_todo']
+    todo_local = todo_local.strip()
+    todos.append(todo_local)
     functions.write_todos(todos)
     st.session_state['new_todo'] = ""
+
 
 st.title('To-Do App')
 st.subheader('This is To-Do App')

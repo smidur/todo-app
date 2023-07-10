@@ -7,9 +7,7 @@ def get_todos(filepath=FILEPATH):
     todos_local = []
     with open(filepath, "r") as file:
         todos_raw = file.readlines()
-    for row in todos_raw:
-        row = row.strip('\n')
-        todos_local.append(row)
+        todos_local = [todo.strip("\n") for todo in todos_raw]
     return todos_local
 
 def write_todos(todos_arg, filepath=FILEPATH):
@@ -17,8 +15,7 @@ def write_todos(todos_arg, filepath=FILEPATH):
     Writes a LIST into a text file.
     Returns NONE
     """
-    for row in todos_arg:
-        todos_arg[todos_arg.index(row)] = row.title() + '\n'
+    todos_arg = [item.title() + "\n" for item in todos_arg]
     with open(filepath, "w") as file:
         file.writelines(todos_arg)
 
